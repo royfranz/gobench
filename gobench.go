@@ -131,6 +131,7 @@ func printResults(results map[int]*Result, startTime time.Time) {
 	fmt.Printf("Bad requests failed (!2xx):     %10d hits\n", badFailed)
 	fmt.Printf("Successful requests rate:       %10d hits/sec\n", success/elapsed)
 	fmt.Printf("Read throughput:                %10d bytes/sec\n", readThroughput/elapsed)
+	fmt.Printf("Read throughput:                %10.2f Gbits/sec\n", float64(float64(readThroughput)/float64(elapsed)*float64(8)/float64(1000000000)))
 	fmt.Printf("Write throughput:               %10d bytes/sec\n", writeThroughput/elapsed)
 	fmt.Printf("Test time:                      %10d sec\n", elapsed)
 }
