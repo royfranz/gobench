@@ -249,7 +249,15 @@ func NewConfiguration() *Configuration {
 	configuration.myClient.WriteTimeout = time.Duration(writeTimeout) * time.Millisecond
 	configuration.myClient.MaxConnsPerHost = clients
 	configuration.myClient.Name = userAgent
-        configuration.myClient.TLSConfig = &tls.Config{ InsecureSkipVerify: insecure }
+	configuration.myClient.TLSConfig = &tls.Config{
+		InsecureSkipVerify: insecure,
+		CipherSuites: []uint16 {
+			tls.TLS_RSA_WITH_AES_256_GCM_SHA384,
+		},
+		MinVersion:               tls.VersionTLS12,
+		MaxVersion:               tls.VersionTLS12,
+	}
+	fmt.Printf("Forcing TLS 1.2 and TLS_RSA_WITH_AES_256_GCM_SHA384\n")
 
 	configuration.myClient.Dial = MyDialer()
 
