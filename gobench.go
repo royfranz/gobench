@@ -256,6 +256,8 @@ func NewConfiguration() *Configuration {
 		},
 		MinVersion:               tls.VersionTLS12,
 		MaxVersion:               tls.VersionTLS12,
+		SessionTicketsDisabled:   true,
+
 	}
 	fmt.Printf("Forcing TLS 1.2 and TLS_RSA_WITH_AES_256_GCM_SHA384\n")
 
